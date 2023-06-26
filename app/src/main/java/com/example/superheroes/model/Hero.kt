@@ -5,6 +5,6 @@ import androidx.annotation.StringRes
 
 data class Hero(
     @StringRes val stringResourceId: Int,
-    val description: Int,
+    val descriptionRes: Int,
     @DrawableRes val imageResourceId: Int
 )
