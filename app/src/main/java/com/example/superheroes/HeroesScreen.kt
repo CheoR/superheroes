@@ -40,24 +40,6 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.res.dimensionResource
 import com.example.superheroes.model.HeroesRepository
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun HeroTopAppBar(modifier: Modifier = Modifier) {
-    CenterAlignedTopAppBar(
-        title = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(R.string.app_name),
-                    style = MaterialTheme.typography.displayLarge
-                )
-            }
-        },
-        modifier = modifier
-    )
-}
-
 @Composable
 fun ListItem(
     hero: Hero,
@@ -125,18 +107,12 @@ fun HeroList(
     heroes: List<Hero>,
     modifier: Modifier = Modifier,
 ) {
-    Scaffold(
-        topBar = {
-            HeroTopAppBar()
-        }
-    ) { it ->
-        LazyColumn(contentPadding = it) {
-            items(heroes) {
-                ListItem(
-                    hero = it,
-                    modifier = Modifier
-                )
-            }
+    LazyColumn() {
+        items(heroes) {
+            ListItem(
+                hero = it,
+                modifier = Modifier
+            )
         }
     }
 }
